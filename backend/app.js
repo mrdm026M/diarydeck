@@ -1,8 +1,8 @@
 const express = require("express");
 const notes = require("./data/notes");
+const { notFound, errorHandler } = require("./middleware/error");
 
 const app = express();
-
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -13,9 +13,12 @@ app.get("/api/v1/notes", (req, res) => {
   res.json(notes);
 });
 
-app.get("/api/v1/note/:id", (req, res) => {
-  const note = notes.find((n) => n._id === req.params.id);
-  res.send(note);
-});
+// Route Imports
+const user = require("./routes/userRoute");
+app.use("/api/v1", user);
+
+// Middleware for Errors
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;
