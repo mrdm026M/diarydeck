@@ -1,0 +1,8 @@
+add cors to backend/app.js
+add metadata to dashboard
+add metadata to notes
+add metadata to createnote
+
+mongo db
+username - diarydeck
+password - diarydeck123
