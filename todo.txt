@@ -2,7 +2,18 @@ add cors to backend/app.js
 add metadata to dashboard
 add metadata to notes
 add metadata to createnote
+add react alert to login
+add react alert to register
+
+#error 
+navigate to homepage when login
 
 mongo db
 username - diarydeck
 password - diarydeck123
+
+
+navbar - useEffect
+navbar - logout
+homepage - useEffect get started
+homepage - navigate
