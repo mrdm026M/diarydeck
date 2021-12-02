@@ -1,11 +1,24 @@
 import React, { useState } from "react";
+import AccountMenu from "./AccountMenu";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../actions/userAction";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const userInfo = localStorage.getItem("userInfo");
   const [isOpen, setIsOpen] = useState(false);
 
   //Add the toggle function here:
   const toggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate("/");
   };
 
   return (
@@ -41,18 +54,24 @@ const Navbar = () => {
             </div>
             {/* Secondary Navbar items */}
             <div className="items-center hidden space-x-8 md:flex ">
-              <a
-                href="/signin"
-                className="px-2 py-2 text-lg font-normal tracking-wide transition duration-300 font-roboto text-lightBg hover:text-normalBlue"
-              >
-                Log In
-              </a>
-              <a
-                href="/signup"
-                className="px-5 py-2 text-lg font-medium tracking-wide transition duration-300 border-2 rounded-xl font-roboto text-lightBg border-normalBg hover:bg-normalBg"
-              >
-                Sign Up
-              </a>
+              {userInfo !== null ? (
+                <AccountMenu user={JSON.parse(userInfo)} />
+              ) : (
+                <>
+                  <a
+                    href="/signin"
+                    className="px-2 py-2 text-lg font-normal tracking-wide transition duration-300 font-roboto text-lightBg hover:text-normalBlue"
+                  >
+                    Log In
+                  </a>
+                  <a
+                    href="/signup"
+                    className="px-5 py-2 text-lg font-medium tracking-wide transition duration-300 border-2 rounded-xl font-roboto text-lightBg border-normalBg hover:bg-normalBg"
+                  >
+                    Sign Up
+                  </a>
+                </>
+              )}
             </div>
             {/* Mobile menu button */}
             <div className="flex items-center md:hidden">
@@ -94,23 +113,37 @@ const Navbar = () => {
               </a>
             </li>
             <hr className="mr-4" />
-            <li>
-              <a
-                href="/signin"
-                className="block px-2 py-2 text-lg font-roboto text-lightBg hover:text-lightBlue"
-              >
-                Log In
-              </a>
-            </li>
-            <hr className="mr-4" />
-            <li>
-              <a
-                href="/signup"
-                className="block px-2 py-2 text-lg font-roboto text-lightBg hover:text-lightBlue"
-              >
-                Sign Up
-              </a>
-            </li>
+            {userInfo !== null ? (
+              <li>
+                <a
+                  href="/"
+                  onClick={logoutHandler}
+                  className="block px-2 py-2 text-lg font-roboto text-lightBg hover:text-lightBlue"
+                >
+                  Log Out
+                </a>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <a
+                    href="/signin"
+                    className="block px-2 py-2 text-lg font-roboto text-lightBg hover:text-lightBlue"
+                  >
+                    Log In
+                  </a>
+                </li>
+                <hr className="mr-4" />
+                <li>
+                  <a
+                    href="/signup"
+                    className="block px-2 py-2 text-lg font-roboto text-lightBg hover:text-lightBlue"
+                  >
+                    Sign Up
+                  </a>
+                </li>
+              </>
+            )}
             <hr className="mr-4" />
           </ul>
         </div>

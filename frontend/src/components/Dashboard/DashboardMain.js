@@ -1,6 +1,8 @@
 import React from "react";
 
 const DashboardMain = () => {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
   return (
     <main className="px-6 py-6 mx-auto max-w-7xl">
       <section className="my-4">
@@ -9,7 +11,7 @@ const DashboardMain = () => {
         </p>
         <h1 className="text-2xl font-semibold tracking md:text-3xl font-montserrat">
           Good Morning, <br />
-          Dhruv
+          {userInfo.name}
         </h1>
       </section>
       <section className="flex flex-col gap-8 py-4 mt-12 md:flex-row">

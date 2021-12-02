@@ -1,5 +1,4 @@
 import React from "react";
-// , { useEffect, useState }
 import {
   BrowserRouter as Router,
   Route,
@@ -16,21 +15,6 @@ import NotesPage from "./pages/Notes/NotesPage";
 import RegisterPage from "./pages/RegisterPage";
 
 const App = () => {
-  // const [user, setUser] = useState({});
-  // const [isAuth, setIsAuth] = useState(false);
-
-  // useEffect(() => {
-  //   const userInfo = localStorage.getItem("userInfo");
-
-  //   if (userInfo) {
-  //     setUser(userInfo);
-  //     setIsAuth(true);
-  //   }
-  // }, []);
-
-  // console.log(user);
-  // console.log(isAuth);
-
   return (
     <Router>
       <Navbar />
