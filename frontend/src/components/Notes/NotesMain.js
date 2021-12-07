@@ -55,9 +55,7 @@ const NotesMain = () => {
         {loading ? (
           <h1>Loading</h1>
         ) : (
-          notes
-            ?.reverse()
-            .map((note) => <NotesAccordian key={note._id} note={note} />)
+          notes.map((note) => <NotesAccordian key={note._id} note={note} />)
         )}
       </section>
     </main>
