@@ -1,10 +1,21 @@
 import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { deleteNoteAction } from "../../actions/noteAction";
 
 const NotesAccordian = ({ note }) => {
+  const dispatch = useDispatch();
+  // const noteDelete = useSelector((state) => state.noteDelete);
+  // const {
+  //   loading: loadingDelete,
+  //   error: errorDelete,
+  //   success: successDelete,
+  // } = noteDelete;
+
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
+      dispatch(deleteNoteAction(id));
     }
   };
 
@@ -35,7 +46,7 @@ const NotesAccordian = ({ note }) => {
                 <p className="mt-4 mb-2 text-base tracking-wide font-roboto text-lightBg">
                   {note.content}
                 </p>
-                <span>Created on - date</span>
+                <span>Created on - {note.createdAt.substring(0, 10)}</span>
               </Disclosure.Panel>
             </>
           )}
