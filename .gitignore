@@ -12,7 +12,9 @@ frontend/src/assets/fonts/*.woff2
 frontend/src/assets/fonts/*.woff
 
 # production
-/build
+frontend/build
+
+*.env
 
 # misc
 .DS_Store
@@ -26,4 +28,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 yarn.lock
-config.env
+
