@@ -1,7 +1,4 @@
 add cors to backend/app.js
-add metadata to dashboard
-add metadata to notes
-add metadata to createnote
 add react alert to login
 add react alert to register
 
