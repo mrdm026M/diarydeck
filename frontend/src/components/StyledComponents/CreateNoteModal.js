@@ -11,8 +11,6 @@ const CreateNoteModal = () => {
   const [category, setCategory] = useState("");
 
   const dispatch = useDispatch();
-  // const noteCreate = useSelector((state) => state.noteCreate);
-  // const { note } = noteCreate;
 
   const resetHandler = () => {
     setTitle("");
